@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import BoardList from '../views/BoardList.vue'
+import Boards from '../views/Boards.vue'
+import MyBoard from '../views/MyBoard.vue'
 
 Vue.use(VueRouter)
 
@@ -8,16 +11,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {layout: 'HomeLayout'},
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/BoardList',
+    name: 'BoardList',
+    meta: {layout: 'MainBoardLayout', title: 'Статистика'},
+    component: BoardList
+  },
+  {
+    path: '/boards',
+    name: 'Boards',
+    meta: {layout: 'MainBoardLayout'},
+    component: Boards
+  },
+  {
+    path: '/boards/my_board/:id/',
+    name: 'MyBoard',
+    meta: {layout: 'MainBoardLayout', title: 'Моя доска'},
+    component: MyBoard
+  },
 ]
 
 const router = new VueRouter({

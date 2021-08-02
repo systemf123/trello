@@ -3,11 +3,14 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import Buefy from 'buefy'
 
 Vue.config.productionTip = false
+Vue.use(Buefy)
 
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
